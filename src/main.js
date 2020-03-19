@@ -2,10 +2,12 @@ import Vue from 'vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
+import Vuelidate from 'vuelidate';
 import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 
+Vue.use(Vuelidate);
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 
