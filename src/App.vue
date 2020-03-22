@@ -2,17 +2,21 @@
   <div id="app">
     <div class="wrapper">
     <div class="sidebar">
-         <router-link to="/"><h2>SRL</h2></router-link>
+        <router-link to="/">
+          <img alt="SRL logo" src="./images/SRL-Logo03.png" width="180ph" height="70px">
+        </router-link>
         <ul>
           <li >
             <div v-b-toggle.collapse-2>Cadastro</div>
             <b-collapse id="collapse-2">
               <div class="cards">
+                <router-link to="/responsavel" >Responsável</router-link>
                 <router-link to="/solicitante" >Solicitante</router-link>
                 <router-link to="/participante" >Participante</router-link>
+                <router-link to="/local" >Local</router-link>
                 <router-link to="/departamento" >Departamento</router-link>
                 <router-link to="/evento" >Evento</router-link>
-                <router-link to="/produto" > Produto</router-link>
+                <router-link to="/produto" >Produto</router-link>
               </div>
             </b-collapse>
             </li>
@@ -20,7 +24,9 @@
           <li> Relatorios </li>
         </ul>
         <div class="about">
-          <div>ABOUT </div>
+          <div>
+            <router-link to="/sobre" >Sobre</router-link>
+          </div>
       </div>
     </div>
     <router-view></router-view>
@@ -38,7 +44,7 @@
 }
 
 body{
-   background-color: #f3f5f9;
+  background-color: #f3f5f9;
 }
 
 .wrapper{
@@ -87,10 +93,10 @@ body{
   width: 25px;
 }
 .wrapper .sidebar .cards {
-   background-color: withe;
-   color: #594f8d;
-   font-size: 12pt;
-   width: 100%;
+  background-color: withe;
+  color: #594f8d;
+  font-size: 12pt;
+  width: 100%;
 }
 .wrapper .sidebar .cards a:hover {
   color: rgba(7, 7, 7, 0.353)
