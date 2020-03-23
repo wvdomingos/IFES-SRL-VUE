@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import HomeHome from '../views/home/home.vue';
 import DepartamentoHome from '../views/departamento/home.vue';
 import DepartamentoForm from '../views/departamento/form.vue';
 import EventoHome from '../views/evento/home.vue';
@@ -23,7 +23,15 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    component: Home,
+    component: Dashboard,
+    children: [{
+      path: '/',
+      name: 'Seja Bem Vindo(a)',
+      components: {
+        dash: HomeHome,
+      },
+    },
+    ],
   },
   {
     path: '/departamento',

@@ -3,7 +3,7 @@
     <div class="wrapper">
     <div class="sidebar">
         <router-link to="/">
-          <img alt="SRL logo" src="./images/SRL-Logo03.png" width="180ph" height="70px">
+          <img alt="SRL logo" src="./images/SRL-Logo02.png" width="180ph" height="70px">
         </router-link>
         <ul>
           <li >
