@@ -6,44 +6,28 @@
             <label for="feedback-user">Codigo</label>
             <b-input
               style="width: 120px"
-              v-model="departamento.codigo"
               readonly />
-          <label for="descricao">Descrição</label>
+          <label for="nomeParticipante">Nome Completo</label>
           <b-input
-            v-model.trim="$v.departamento.descricao.$model"
-            id="descricao" />
-          <b-form-invalid-feedback
-          :state="$v.departamento.descricao.required">
+            id="nomeParticipante"/>
+          <b-form-invalid-feedback>
           Campo obrigatorio</b-form-invalid-feedback>
-          <label for="responsavel">Responsavel</label>
-          <b-form-select
-            id="responsavel"
-            v-model="departamento.responsavel"
-            :options="responsaveis"
-            class="mb-3">
-            <template v-slot:first>
-              <b-form-select-option
-              :value="null"
-              disabled>
-                --Selecione o responsavel--
-              </b-form-select-option>
-            </template>
-        </b-form-select>
-          <label for="textarea">Observação</label>
-         <b-form-textarea
-            id="textarea"
-            v-model="departamento.observacao"
-            placeholder="Informe a observação"
-            rows="4"
-            max-rows="10"
-          ></b-form-textarea>
+          <label for="emailParticipante">E-mail</label>
+          <b-input
+            id="emailParticipante" />
+          <b-form-invalid-feedback>
+          Campo obrigatorio</b-form-invalid-feedback>
+          <label for="cpfParticipante">CPF</label>
+          <b-input
+            id="emailParticipante" />
+          <b-form-invalid-feedback>
+          Campo obrigatorio</b-form-invalid-feedback>
           <b-button
             class="my-4"
             style="float: right"
             variant="success"
-             type="submit"
-             :disabled="this.$v.$invalid || this.submitStatus === 'PENDING'">
-             Salvar</b-button>
+            type="submit">
+            Salvar</b-button>
         </b-form>
       </b-card>
     </b-container>
@@ -56,51 +40,40 @@
 import { required } from 'vuelidate/lib/validators';
 
 export default {
-  name: 'departamentoForm',
+  name: 'participanteForm',
   data: () => ({
-    departamento: {
+    participante: {
       codigo: '',
-      descricao: '',
-      responsavel: null,
-      observacao: '',
+      nomeParticipante: '',
+      emailParticipante: '',
+      cpfParticipante: '',
     },
     submitStatus: null,
-    responsaveis: [],
   }),
-  mounted() {
-    this.listResposaveis();
-  },
   methods: {
     listResposaveis() {
-      if (localStorage.responsaveis) {
-        this.responsaveis = JSON.parse(localStorage.responsaveis);
-      } else {
-        const a = ['Joao', 'Jose', 'Maria', 'Qualquer'];
-        localStorage.setItem('responsaveis', JSON.stringify(a));
-        this.responsaveis = a;
+      if (!localStorage.idParticipante) {
+        localStorage.setItem('idParticipante', 0);
       }
-      if (!localStorage.idDepartamento) {
-        localStorage.setItem('idDepartamento', 0);
-      }
-      if (!localStorage.departamentos) {
-        localStorage.setItem('departamentos', '[]');
+      if (!localStorage.participantes) {
+        localStorage.setItem('participantes', '[]');
       }
     },
     submit() {
-      console.log(this.departamento);
+      console.log(this.participante);
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.submitStatus = 'ERROR';
         console.log('Deu ruim');
       } else {
         try {
-          this.departamento.codigo = parseInt(JSON.parse(localStorage.idDepartamento), 10);
-          this.departamento.codigo += 1;
-          const deps = JSON.parse(localStorage.departamentos);
+          this.participante.codigo = parseInt(JSON.parse(localStorage.idParticipante), 10);
+          this.participante.codigo += 1;
+          const deps = JSON.parse(localStorage.participantes);
           console.log(deps);
-          deps.push(this.departamento);
-          localStorage.setItem('departamentos', JSON.stringify(deps));
-          localStorage.idDepartamento = this.departamento.codigo;
+          deps.push(this.participante);
+          localStorage.setItem('participantes', JSON.stringify(deps));
+          localStorage.idParticipante = this.participante.codigo;
         } catch (ex) {
           console.log(ex);
         }
@@ -108,8 +81,8 @@ export default {
     },
   },
   validations: {
-    departamento: {
-      descricao: { required },
+    participante: {
+      nomeParticipante: { required },
     },
   },
 };

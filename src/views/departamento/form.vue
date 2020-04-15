@@ -8,14 +8,14 @@
               style="width: 120px"
               v-model="departamento.codigo"
               readonly />
-          <label for="descricao">Descrição</label>
+          <label for="descricaoDepart">Descrição do Departamento</label>
           <b-input
             v-model.trim="$v.departamento.descricao.$model"
-            id="descricao" />
+            id="descricaoDepart" />
           <b-form-invalid-feedback
           :state="$v.departamento.descricao.required">
           Campo obrigatorio</b-form-invalid-feedback>
-          <label for="responsavel">Responsavel</label>
+          <label for="responsavel">Responsável do Departamento</label>
           <b-form-select
             id="responsavel"
             v-model="departamento.responsavel"
@@ -30,7 +30,7 @@
             </template>
         </b-form-select>
           <label for="textarea">Observação</label>
-         <b-form-textarea
+          <b-form-textarea
             id="textarea"
             v-model="departamento.observacao"
             placeholder="Informe a observação"
@@ -41,9 +41,9 @@
             class="my-4"
             style="float: right"
             variant="success"
-             type="submit"
-             :disabled="this.$v.$invalid || this.submitStatus === 'PENDING'">
-             Salvar</b-button>
+            type="submit"
+            :disabled="this.$v.$invalid || this.submitStatus === 'PENDING'">
+            Salvar</b-button>
         </b-form>
       </b-card>
     </b-container>

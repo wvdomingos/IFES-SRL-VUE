@@ -39,7 +39,7 @@ const routes = [
     component: Dashboard,
     children: [{
       path: '/',
-      name: 'Listar Departamento',
+      name: 'Lista de Departamentos',
       components: {
         dash: DepartamentoHome,
       },
@@ -64,7 +64,7 @@ const routes = [
     component: Dashboard,
     children: [{
       path: '/',
-      name: 'Listar Evento',
+      name: 'Lista de Eventos',
       components: {
         dash: EventoHome,
       },
@@ -89,7 +89,7 @@ const routes = [
     component: Dashboard,
     children: [{
       path: '/',
-      name: 'Listar Local',
+      name: 'Lista de Locais',
       components: {
         dash: LocalHome,
       },
@@ -114,7 +114,7 @@ const routes = [
     component: Dashboard,
     children: [{
       path: '/',
-      name: 'Listar Participante',
+      name: 'Lista de Participantes',
       components: {
         dash: ParticipanteHome,
       },
@@ -139,7 +139,7 @@ const routes = [
     component: Dashboard,
     children: [{
       path: '/',
-      name: 'Listar Produto',
+      name: 'Lista de Produtos',
       components: {
         dash: ProdutoHome,
       },
@@ -164,7 +164,7 @@ const routes = [
     component: Dashboard,
     children: [{
       path: '/',
-      name: 'Listar Responsavel',
+      name: 'Lista de Responsáveis',
       components: {
         dash: ResponsavelHome,
       },
@@ -189,7 +189,7 @@ const routes = [
     component: Dashboard,
     children: [{
       path: '/',
-      name: 'Listar Solicitante',
+      name: 'Lista de Solicitantes',
       components: {
         dash: SolicitanteHome,
       },

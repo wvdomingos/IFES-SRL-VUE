@@ -8,28 +8,42 @@
               style="width: 120px"
               v-model="evento.codigo"
               readonly />
-          <label for="descricao">Descrição</label>
+          <label for="descricaoEvento">Descrição do Evento</label>
           <b-input
-            v-model.trim="$v.evento.descricao.$model"
-            id="descricao" />
+            v-model.trim="$v.evento.descricaoEvento.$model"
+            id="descricaoEvento" />
           <b-form-invalid-feedback
-          :state="$v.evento.descricao.required">
+          :state="$v.evento.descricaoEvento.required">
           Campo obrigatorio</b-form-invalid-feedback>
-          <label for="responsavel">Responsavel</label>
+          <label for="solicitanteEvento">Solicitante do Evento</label>
+          <b-input
+            id="solicitanteEvento" />
+          <label for="organizador">Organizador do Evento</label>
           <b-form-select
-            id="responsavel"
-            v-model="evento.responsavel"
-            :options="responsaveis"
+            id="organizador"
+            v-model="evento.organizador"
+            :options="organizadores"
             class="mb-3">
             <template v-slot:first>
               <b-form-select-option
               :value="null"
               disabled>
-                --Selecione o responsavel--
+                --Selecione um Organizador--
               </b-form-select-option>
             </template>
         </b-form-select>
-          <label for="textarea">Observação</label>
+          <label for="departamentoResp">Departamento do Responsável</label>
+          <b-input
+            id="departamentoResp" />
+          <label for="dataPrevInicio">Data Prevista Início do Evento</label>
+          <b-input
+            type='date'
+            id="dataPrevInicio" />
+          <label for="dataPrevTermino">Data Prevista Término do Evento</label>
+          <b-input
+            type='date'
+            id="dataPrevTermino" />
+          <label for="textarea">Observação do Evento</label>
           <b-form-textarea
             id="textarea"
             v-model="evento.observacao"
@@ -60,24 +74,28 @@ export default {
   data: () => ({
     evento: {
       codigo: '',
-      descricao: '',
-      responsavel: null,
+      descricaoEvento: '',
+      solicitante: '',
+      organizador: null,
+      departamentoResp: '',
+      dataPrevInicio: '',
+      dataPrevTermino: '',
       observacao: '',
     },
     submitStatus: null,
-    responsaveis: [],
+    organizadores: [],
   }),
   mounted() {
-    this.listResposaveis();
+    this.listOrganizadores();
   },
   methods: {
-    listResposaveis() {
-      if (localStorage.responsaveis) {
-        this.responsaveis = JSON.parse(localStorage.responsaveis);
+    listOrganizadores() {
+      if (localStorage.organizadores) {
+        this.organizadores = JSON.parse(localStorage.organizadores);
       } else {
         const a = ['Joao', 'Jose', 'Maria', 'Qualquer'];
-        localStorage.setItem('responsaveis', JSON.stringify(a));
-        this.responsaveis = a;
+        localStorage.setItem('organizadores', JSON.stringify(a));
+        this.organizadores = a;
       }
       if (!localStorage.idevento) {
         localStorage.setItem('idevento', 0);
@@ -109,7 +127,7 @@ export default {
   },
   validations: {
     evento: {
-      descricao: { required },
+      descricaoEvento: { required },
     },
   },
 };

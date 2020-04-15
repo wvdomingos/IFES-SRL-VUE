@@ -36,8 +36,9 @@ export default {
      */
     fields: [
       { key: 'codigo', sortable: true },
-      { key: 'descricao', sortable: true },
+      { key: 'descricaoDepart', sortable: true },
       { key: 'responsavel', sortable: true },
+      { key: 'observacao', sortable: true },
       { key: '#', sortable: false },
     ],
   }),
