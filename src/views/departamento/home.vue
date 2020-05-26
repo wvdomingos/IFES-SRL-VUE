@@ -35,11 +35,10 @@ export default {
       se tiver vazio tbem mostra do mesmo jeito
      */
     fields: [
-      { key: 'codigo', sortable: true },
-      { key: 'descricaoDepart', sortable: true },
-      { key: 'responsavel', sortable: true },
-      { key: 'observacao', sortable: true },
-      { key: '#', sortable: false },
+      { key: 'código', sortable: true },
+      { key: 'descrição Depart.', sortable: true },
+      { key: 'Responsável', sortable: true },
+      { key: 'Observação', sortable: true },
     ],
   }),
   async mounted() {

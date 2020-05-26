@@ -15,7 +15,7 @@
           <b-form-invalid-feedback
           :state="$v.departamento.descricao.required">
           Campo obrigatorio</b-form-invalid-feedback>
-          <label for="responsavel">Responsável do Departamento</label>
+          <label for="responsavel">Responsável</label>
           <b-form-select
             id="responsavel"
             v-model="departamento.responsavel"
@@ -25,7 +25,7 @@
               <b-form-select-option
               :value="null"
               disabled>
-                --Selecione o responsavel--
+                --Selecione o Responsável do Departamento--
               </b-form-select-option>
             </template>
         </b-form-select>

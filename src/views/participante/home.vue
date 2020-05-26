@@ -36,9 +36,9 @@ export default {
      */
     fields: [
       { key: 'codigo', sortable: true },
-      { key: 'nomeParticipante', sortable: true },
-      { key: 'emailParticipante', sortable: true },
-      { key: 'cpfParticipante', sortable: false },
+      { key: 'Nome do Participante', sortable: true },
+      { key: 'email', sortable: true },
+      { key: 'cpf', sortable: false },
     ],
   }),
   async mounted() {

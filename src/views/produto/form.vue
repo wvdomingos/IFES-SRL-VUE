@@ -6,33 +6,33 @@
             <label for="feedback-user">Codigo</label>
             <b-input
               style="width: 120px"
-              v-model="departamento.codigo"
+              v-model="produto.codigo"
               readonly />
-          <label for="descricao">Descrição</label>
+          <label for="descricao">Descrição do Produto</label>
           <b-input
-            v-model.trim="$v.departamento.descricao.$model"
+            v-model.trim="$v.produto.descricao.$model"
             id="descricao" />
           <b-form-invalid-feedback
-          :state="$v.departamento.descricao.required">
+          :state="$v.produto.descricao.required">
           Campo obrigatorio</b-form-invalid-feedback>
-          <label for="responsavel">Responsavel</label>
+          <label for="tipo">Tipo (Equipamento / Serviço)</label>
           <b-form-select
-            id="responsavel"
-            v-model="departamento.responsavel"
-            :options="responsaveis"
+            id="tipo"
+            v-model="produto.tipo"
+            :options="tipos"
             class="mb-3">
             <template v-slot:first>
               <b-form-select-option
               :value="null"
               disabled>
-                --Selecione o responsavel--
+                --Selecione o tipo de produto--
               </b-form-select-option>
             </template>
-        </b-form-select>
+          </b-form-select>
           <label for="textarea">Observação</label>
-         <b-form-textarea
+          <b-form-textarea
             id="textarea"
-            v-model="departamento.observacao"
+            v-model="produto.observacao"
             placeholder="Informe a observação"
             rows="4"
             max-rows="10"
@@ -56,51 +56,51 @@
 import { required } from 'vuelidate/lib/validators';
 
 export default {
-  name: 'departamentoForm',
+  name: 'produtoForm',
   data: () => ({
-    departamento: {
+    produto: {
       codigo: '',
       descricao: '',
-      responsavel: null,
+      tipo: null,
       observacao: '',
     },
     submitStatus: null,
-    responsaveis: [],
+    tipos: [],
   }),
   mounted() {
-    this.listResposaveis();
+    this.listTipos();
   },
   methods: {
-    listResposaveis() {
-      if (localStorage.responsaveis) {
-        this.responsaveis = JSON.parse(localStorage.responsaveis);
+    listTipos() {
+      if (localStorage.tipos) {
+        this.tipos = JSON.parse(localStorage.tipos);
       } else {
-        const a = ['Joao', 'Jose', 'Maria', 'Qualquer'];
-        localStorage.setItem('responsaveis', JSON.stringify(a));
-        this.responsaveis = a;
+        const a = ['1 - Equipamentos', '2 - Serviços', '3 - Outros'];
+        localStorage.setItem('tipos', JSON.stringify(a));
+        this.tipos = a;
       }
-      if (!localStorage.idDepartamento) {
-        localStorage.setItem('idDepartamento', 0);
+      if (!localStorage.idProduto) {
+        localStorage.setItem('idProduto', 0);
       }
-      if (!localStorage.departamentos) {
-        localStorage.setItem('departamentos', '[]');
+      if (!localStorage.produtos) {
+        localStorage.setItem('produtos', '[]');
       }
     },
     submit() {
-      console.log(this.departamento);
+      console.log(this.produto);
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.submitStatus = 'ERROR';
         console.log('Deu ruim');
       } else {
         try {
-          this.departamento.codigo = parseInt(JSON.parse(localStorage.idDepartamento), 10);
-          this.departamento.codigo += 1;
-          const deps = JSON.parse(localStorage.departamentos);
+          this.produto.codigo = parseInt(JSON.parse(localStorage.idProduto), 10);
+          this.produto.codigo += 1;
+          const deps = JSON.parse(localStorage.produtos);
           console.log(deps);
-          deps.push(this.departamento);
-          localStorage.setItem('departamentos', JSON.stringify(deps));
-          localStorage.idDepartamento = this.departamento.codigo;
+          deps.push(this.produto);
+          localStorage.setItem('produtos', JSON.stringify(deps));
+          localStorage.idProduto = this.produto.codigo;
         } catch (ex) {
           console.log(ex);
         }
@@ -108,7 +108,7 @@ export default {
     },
   },
   validations: {
-    departamento: {
+    produto: {
       descricao: { required },
     },
   },

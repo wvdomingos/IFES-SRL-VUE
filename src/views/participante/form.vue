@@ -7,7 +7,7 @@
             <b-input
               style="width: 120px"
               readonly />
-          <label for="nomeParticipante">Nome Completo</label>
+          <label for="nomeParticipante">Nome Completo do Participante</label>
           <b-input
             id="nomeParticipante"/>
           <b-form-invalid-feedback>

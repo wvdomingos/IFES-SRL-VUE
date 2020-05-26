@@ -37,10 +37,9 @@ export default {
     fields: [
       { key: 'codigo', sortable: true },
       { key: 'login', sortable: true },
-      { key: 'nomeResponsavel', sortable: true },
+      { key: 'Nome do Responsável', sortable: true },
       { key: 'email', sortable: true },
       { key: 'cpf', sortable: true },
-      { key: 'departamento', sortable: true },
     ],
   }),
   async mounted() {

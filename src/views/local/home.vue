@@ -5,7 +5,7 @@
           variant="info"
           class="my-2"
           style="float: right"
-          to="departamento/novo/"> Novo </b-button>
+          to="local/novo/"> Novo </b-button>
       </div>
       <div>
         <b-table
@@ -13,7 +13,7 @@
         bordered
         striped
         hover
-        :items="departamentos"
+        :items="locais"
         :fields="fields" />
     </div>
     </div>
@@ -26,9 +26,9 @@
 </style>
 <script>
 export default {
-  name: 'departamento',
+  name: 'local',
   data: () => ({
-    departamentos: [],
+    locais: [],
     /*
       fields nao e obrigatorio, ele puxa o nome do objeto,
       coloquei pra fixa esses valores. tendo outros campos so mostra esse
@@ -37,16 +37,16 @@ export default {
     fields: [
       { key: 'codigo', sortable: true },
       { key: 'descricao', sortable: true },
+      { key: 'capacidade', sortable: true },
       { key: 'responsavel', sortable: true },
-      { key: '#', sortable: false },
     ],
   }),
   async mounted() {
-    this.buscarDepartamentos();
+    this.buscarLocais();
   },
   methods: {
-    async buscarDepartamentos() {
-      this.departamentos = JSON.parse(localStorage.departamentos);
+    async buscarLocais() {
+      this.locais = JSON.parse(localStorage.locais);
     },
   },
   computed: {
